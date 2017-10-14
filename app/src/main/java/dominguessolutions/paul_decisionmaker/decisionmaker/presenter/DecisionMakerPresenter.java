@@ -25,4 +25,6 @@ public class DecisionMakerPresenter {
     public void addOption(String option) {
         optionsToDecide.add(option);
     }
+
+    public List<String> getOptions() { return optionsToDecide; }
 }

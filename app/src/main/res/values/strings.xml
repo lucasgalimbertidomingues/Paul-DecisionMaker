@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Paul - Decision Maker</string>
+    <string name="write_new_option">Write new option here...</string>
 </resources>

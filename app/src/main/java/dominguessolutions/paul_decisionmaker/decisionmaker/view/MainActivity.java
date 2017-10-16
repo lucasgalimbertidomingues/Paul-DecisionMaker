@@ -8,8 +8,10 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import dominguessolutions.paul_decisionmaker.R;
+import dominguessolutions.paul_decisionmaker.decisionmaker.model.TextUtils;
 import dominguessolutions.paul_decisionmaker.decisionmaker.presenter.DecisionMakerPresenter;
 
 import static android.R.layout.simple_list_item_1;
@@ -38,12 +40,32 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
     }
 
     private void btnAddOptionClick() {
-        EditText txtNewOption = (EditText) findViewById(R.id.txtNewOption);
-        decisionMakerPresenter.addOption(txtNewOption.getText().toString());
+        EditText txtNewOption = (EditText)findViewById(R.id.txtNewOption);
+        String newOption = txtNewOption.getText().toString();
 
+        if (isValidOption(newOption)) {
+            decisionMakerPresenter.addOption(newOption);
+            addOptionToScreen();
+            txtNewOption.getText().clear();
+        }
+    }
+
+    private boolean isValidOption(String newOption) {
+        if (TextUtils.isValidText(newOption)) {
+            return true;
+        }
+
+        notifyUserToTypeValidText();
+        return false;
+    }
+
+    private void notifyUserToTypeValidText() {
+        Toast.makeText(this, R.string.type_valid_text, Toast.LENGTH_LONG).show();
+    }
+
+    private void addOptionToScreen() {
         ListView listOptions = (ListView) findViewById(R.id.listOptions);
-        listOptions.setAdapter(new ArrayAdapter<String>(this, simple_list_item_1, decisionMakerPresenter.getOptions()));
-
-        txtNewOption.getText().clear();
+        ArrayAdapter<String> listOptionsAdapter = new ArrayAdapter<String>(this, simple_list_item_1, decisionMakerPresenter.getOptions());
+        listOptions.setAdapter(listOptionsAdapter);
     }
 }

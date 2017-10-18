@@ -3,4 +3,6 @@
     <string name="write_new_option">Write new option here...</string>
     <string name="send_new_option">Send new option</string>
     <string name="type_valid_text">Please, type some text to insert new option</string>
+    <string name="decision_announcement">The decision is...</string>
+    <string name="decision_ok">Ok, Thanks Paul</string>
 </resources>

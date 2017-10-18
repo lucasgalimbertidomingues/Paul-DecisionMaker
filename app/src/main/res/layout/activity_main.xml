@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="dominguessolutions.paul_decisionmaker.decisionmaker.view.MainActivity"
-    android:background="@drawable/backgroud">
+    android:background="@drawable/background">
 
     <ListView
         android:id="@+id/listOptions"

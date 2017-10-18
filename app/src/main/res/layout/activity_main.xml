@@ -4,37 +4,42 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
+    android:backgroundTint="@color/colorAccent"
+    android:backgroundTintMode="multiply"
     android:orientation="vertical"
-    tools:context="dominguessolutions.paul_decisionmaker.decisionmaker.view.MainActivity"
-    android:background="@drawable/background">
+    tools:context="dominguessolutions.paul_decisionmaker.decisionmaker.view.MainActivity">
 
     <ListView
         android:id="@+id/listOptions"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_above="@+id/layoutNewOption" />
 
     <LinearLayout
         android:id="@+id/layoutNewOption"
-        android:layout_alignParentBottom="true"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:background="@color/colorPrimary">
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
 
         <EditText
             android:id="@+id/txtNewOption"
-            android:inputType="text"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_weight="1"
-            android:hint="@string/write_new_option"/>
+            android:background="@color/colorPrimary"
+            android:hint="@string/write_new_option"
+            android:inputType="text" />
 
         <ImageButton
             android:id="@+id/btnAddOption"
-            android:contentDescription="@string/send_new_option"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:background="@color/colorAccent"
+            android:contentDescription="@string/send_new_option"
+            android:elevation="0dp"
+            android:tint="@color/colorPrimaryDark"
             app:srcCompat="@android:drawable/ic_menu_send" />
 
     </LinearLayout>

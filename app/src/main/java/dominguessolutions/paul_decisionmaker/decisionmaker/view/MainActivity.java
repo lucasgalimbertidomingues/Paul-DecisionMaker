@@ -42,8 +42,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
         ImageButton btnAddOption = (ImageButton)findViewById(R.id.btnAddOption);
         btnAddOption.setOnClickListener(this);
 
-        final DecisionDialog decisionDialogFinal = new DecisionDialog(this);
-        decisionDialog = decisionDialogFinal;
+        decisionDialog = new DecisionDialog(this);
     }
 
     @Override
@@ -94,7 +93,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
     }
 
     private void showDecision() {
-        if (!decisionDialog.isDialogOpen()) {
+        if (!decisionDialog.isShowing()) {
             decisionDialog.setDecision(decisionMakerPresenter.makeDecision());
             decisionDialog.show();
         }

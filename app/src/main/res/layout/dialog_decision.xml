@@ -20,8 +20,8 @@
             android:gravity="center_vertical|center_horizontal|center">
 
             <ImageView
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="130dp"
+                android:layout_height="130dp"
                 android:src="@drawable/paul_decided"
                 android:layout_marginBottom="@dimen/activity_vertical_margin"/>
 
@@ -29,14 +29,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/decision_announcement"
+                android:textSize="@dimen/size_medium"
                 android:layout_marginBottom="@dimen/activity_vertical_margin"/>
 
             <TextView
+                android:gravity="center_vertical|center_horizontal|center"
                 android:id="@+id/txtDecision"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
-                android:textSize="@dimen/size_big"
+                android:textSize="@dimen/size_giant"
                 android:layout_marginBottom="@dimen/activity_vertical_margin"/>
 
             <Button

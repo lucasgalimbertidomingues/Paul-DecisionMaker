@@ -20,9 +20,11 @@
             android:id="@+id/txtOption"
             android:textSize="@dimen/size_big"
             android:textStyle="bold"
-            android:layout_gravity="center_vertical"/>
+            android:layout_gravity="center_vertical"
+            android:layout_above="@+id/layoutDeleteOption" />
 
         <LinearLayout
+            android:id="@+id/layoutDeleteOption"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="right">
@@ -32,7 +34,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@android:drawable/ic_menu_delete"
-
                 android:background="@android:color/transparent"
                 />
         </LinearLayout>

@@ -27,7 +27,7 @@
             android:layout_weight="1"
             android:background="@color/colorPrimary"
             android:hint="@string/write_new_option"
-            android:inputType="text" />
+            android:inputType="textCapSentences" />
 
         <ImageButton
             android:id="@+id/btnAddOption"

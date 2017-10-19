@@ -5,4 +5,5 @@
     <dimen name="activity_default_margin">16dp</dimen>
     <dimen name="size_medium">20sp</dimen>
     <dimen name="size_big">25sp</dimen>
+    <dimen name="size_giant">32sp</dimen>
 </resources>

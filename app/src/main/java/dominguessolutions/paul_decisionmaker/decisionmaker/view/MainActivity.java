@@ -6,7 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
@@ -19,8 +18,6 @@ import dominguessolutions.paul_decisionmaker.decisionmaker.model.Shake;
 import dominguessolutions.paul_decisionmaker.decisionmaker.model.ShakeAccelerometer;
 import dominguessolutions.paul_decisionmaker.decisionmaker.model.TextUtils;
 import dominguessolutions.paul_decisionmaker.decisionmaker.presenter.DecisionMakerPresenter;
-
-import static android.R.layout.simple_list_item_1;
 
 public class MainActivity extends AppCompatActivity implements OnClickListener, SensorListener {
 
@@ -78,8 +75,10 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
     }
 
     private void addOptionToScreen() {
+        List<String> options = decisionMakerPresenter.getOptions();
+        ListOptionsAdapter listOptionsAdapter = new ListOptionsAdapter(options, this);
+
         ListView listOptions = (ListView) findViewById(R.id.listOptions);
-        ArrayAdapter<String> listOptionsAdapter = new ArrayAdapter<String>(this, simple_list_item_1, decisionMakerPresenter.getOptions());
         listOptions.setAdapter(listOptionsAdapter);
     }
 

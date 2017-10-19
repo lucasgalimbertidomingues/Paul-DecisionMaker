@@ -5,37 +5,34 @@
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/activity_default_margin">
 
-    <LinearLayout
+    <RelativeLayout
         android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/activity_vertical_margin"
         android:layout_marginBottom="@dimen/activity_vertical_margin"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
         android:layout_marginRight="@dimen/activity_horizontal_margin">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/txtOption"
-            android:textSize="@dimen/size_big"
-            android:textStyle="bold"
-            android:layout_gravity="center_vertical"
-            android:layout_above="@+id/layoutDeleteOption" />
-
-        <LinearLayout
-            android:id="@+id/layoutDeleteOption"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="right">
+            android:id="@+id/txtOption"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:textSize="@dimen/size_big"
+            android:textStyle="bold"
+            android:layout_gravity="center_vertical" />
 
-            <ImageButton
-                android:id="@+id/btnDeleteOption"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@android:drawable/ic_menu_delete"
-                android:background="@android:color/transparent"
-                />
-        </LinearLayout>
-    </LinearLayout>
+        <ImageButton
+            android:id="@+id/btnDeleteOption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/txtOption"
+            android:layout_alignRight="@+id/txtOption"
+            android:src="@android:drawable/ic_menu_delete"
+            android:background="@android:color/transparent"
+            android:layout_toStartOf="@+id/txtOption"
+            android:layout_toLeftOf="@id/txtOption"/>
+    </RelativeLayout>
 </LinearLayout>

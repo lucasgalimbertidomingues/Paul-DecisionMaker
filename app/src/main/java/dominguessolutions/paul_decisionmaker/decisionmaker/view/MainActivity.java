@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
@@ -39,6 +40,9 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
         ImageButton btnAddOption = (ImageButton)findViewById(R.id.btnAddOption);
         btnAddOption.setOnClickListener(this);
 
+        Button btnMakeDecision = (Button)findViewById(R.id.btnMakeDecision);
+        btnMakeDecision.setOnClickListener(this);
+
         decisionDialog = new DecisionDialog(this);
     }
 
@@ -48,6 +52,13 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
             btnAddOptionClick();
             return;
         }
+        if(v.getId() == R.id.btnMakeDecision) {
+            btnMakeDecisionClick();
+        }
+    }
+
+    private void btnMakeDecisionClick() {
+        makeDecision();
     }
 
     private void btnAddOptionClick() {
@@ -85,10 +96,20 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
     @Override
     public void onSensorChanged(int sensor, float[] values) {
         if (shake.shakeDetected(sensor, values)) {
-            if (haveOptionsToDecide(decisionMakerPresenter.getOptions())) {
-                showDecision();
-            }
+            makeDecision();
         }
+    }
+
+    private void makeDecision() {
+        if (haveOptionsToDecide(decisionMakerPresenter.getOptions())) {
+            showDecision();
+        } else {
+            notifyUserToSetSomeOption();
+        }
+    }
+
+    private void notifyUserToSetSomeOption() {
+        Toast.makeText(this, R.string.insert_some_option, Toast.LENGTH_LONG).show();
     }
 
     private void showDecision() {

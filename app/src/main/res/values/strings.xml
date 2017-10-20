@@ -5,4 +5,7 @@
     <string name="type_valid_text">Please, type some text to insert new option</string>
     <string name="decision_announcement">The decision is...</string>
     <string name="decision_ok">OK, Thanks Paul</string>
+    <string name="shake_device">Shake device to</string>
+    <string name="make_decision">Make decision</string>
+    <string name="insert_some_option">Please add some option first</string>
 </resources>

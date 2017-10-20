@@ -7,28 +7,62 @@
     android:orientation="vertical"
     tools:context="dominguessolutions.paul_decisionmaker.decisionmaker.view.MainActivity">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/linearLayout"
+        android:background="@color/colorPrimaryDark"
+        android:gravity="center_vertical|center_horizontal">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/shake_device" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/shake_device"
+            android:textSize="@dimen/size_medium"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"/>
+
+        <Button
+            android:id="@+id/btnMakeDecision"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/make_decision"
+            android:backgroundTint="@color/colorPrimary"/>
+
+    </LinearLayout>
+
     <ListView
         android:id="@+id/listOptions"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/layoutNewOption" />
+        android:layout_above="@+id/layoutNewOption"
+        android:layout_below="@+id/linearLayout" />
 
     <LinearLayout
         android:id="@+id/layoutNewOption"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:background="@color/colorPrimaryDark">
 
         <EditText
             android:id="@+id/txtNewOption"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_weight="1"
-            android:background="@color/colorPrimaryDark"
             android:maxLength="@integer/maxLegnthOption"
             android:hint="@string/write_new_option"
-            android:inputType="textCapSentences" />
+            android:inputType="textCapSentences"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"/>
 
         <ImageButton
             android:id="@+id/btnAddOption"

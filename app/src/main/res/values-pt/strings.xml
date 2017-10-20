@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Paul</string>
+    <string name="write_new_option">Escreva uma nova opção aqui...</string>
+    <string name="send_new_option">Enviar nova opção</string>
+    <string name="type_valid_text">Por favor, insira algum texto para inserir a nova opção</string>
+    <string name="decision_announcement">E a decisão é...</string>
+    <string name="decision_ok">OK, Valeu Paul</string>
+    <string name="shake_device">Agite para</string>
+    <string name="make_decision">Tomar a decisão</string>
+    <string name="insert_some_option">Por favor, insira alguma opção primeiro</string>
+</resources>

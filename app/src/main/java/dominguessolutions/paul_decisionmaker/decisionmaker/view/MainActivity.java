@@ -9,6 +9,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -69,6 +70,8 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
             decisionMakerPresenter.addOption(newOption);
             addOptionToScreen();
             txtNewOption.getText().clear();
+            LinearLayout layoutInsertOptionToStartLayout = (LinearLayout)findViewById(R.id.insertOptionToStartLayout);
+            layoutInsertOptionToStartLayout.setVisibility(View.GONE);
         }
     }
 

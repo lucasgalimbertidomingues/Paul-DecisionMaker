@@ -9,4 +9,5 @@
     <string name="shake_device">Agite para</string>
     <string name="make_decision">Tomar a decisão</string>
     <string name="insert_some_option">Por favor, insira alguma opção primeiro</string>
+    <string name="start_adding_option">Comece adicionando uma opção</string>
 </resources>

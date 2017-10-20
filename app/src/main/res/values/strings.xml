@@ -8,4 +8,5 @@
     <string name="shake_device">Shake device to</string>
     <string name="make_decision">Make decision</string>
     <string name="insert_some_option">Please add some option first</string>
+    <string name="start_adding_option">Start by adding an option</string>
 </resources>

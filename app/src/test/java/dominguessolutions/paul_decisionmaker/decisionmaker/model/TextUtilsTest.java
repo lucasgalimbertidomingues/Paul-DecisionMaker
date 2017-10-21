@@ -16,10 +16,7 @@ public class TextUtilsTest {
 
     @Test
     public void isNotValidTextWhenNullOrEmpty() throws Exception {
-        String textNull = null;
-        assertFalse(TextUtils.isValidText(textNull));
-
-        String textEmpty = "";
-        assertFalse(TextUtils.isValidText(textEmpty));
+        assertFalse(TextUtils.isValidText(null));
+        assertFalse(TextUtils.isValidText(""));
     }
 }

@@ -1,9 +1,10 @@
 package dominguessolutions.paul_decisionmaker.decisionmaker.model;
 
-import android.hardware.SensorManager;
-
 import org.junit.Before;
 import org.junit.Test;
+
+import static android.hardware.SensorManager.SENSOR_LIGHT;
+import static android.hardware.SensorManager.SENSOR_ACCELEROMETER;
 
 import static org.junit.Assert.*;
 
@@ -15,12 +16,26 @@ public class ShakeAccelerometerTest {
 
     @Before
     public void setUp() {
-        SensorManager sensorManager = null;
-        shakeAccelerometer = new ShakeAccelerometer(sensorManager);
+        shakeAccelerometer = new ShakeAccelerometer();
     }
 
     @Test
-    public void mustNotDetectShakeWhenSensorIsNotAccelerometer() throws Exception {
-        assertFalse(shakeAccelerometer.shakeDetected(0, new float[]{0}));
+    public void mustNotDetectShakeWhenSensorIsNotAccelerometer() {
+        assertFalse(shakeAccelerometer.shakeDetected(SENSOR_LIGHT, generateCoordinatesToDetectShake()));
+    }
+
+    @Test
+    public void mustNotDetectShakeWhenTimeBetweenShakesIsTooShort() {
+        shakeAccelerometer.shakeDetected(SENSOR_ACCELEROMETER, generateCoordinatesToDetectShake());
+        assertFalse(shakeAccelerometer.shakeDetected(SENSOR_ACCELEROMETER, generateCoordinatesToDetectShake()));
+    }
+
+    @Test
+    public void mustDetectShake() {
+        assertTrue(shakeAccelerometer.shakeDetected(SENSOR_ACCELEROMETER, generateCoordinatesToDetectShake()));
+    }
+
+    private float[] generateCoordinatesToDetectShake() {
+        return new float[]{99999999999999f,99999999999999f,99999999999999f};
     }
 }

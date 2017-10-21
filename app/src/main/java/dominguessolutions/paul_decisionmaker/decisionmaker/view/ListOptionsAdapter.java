@@ -11,37 +11,35 @@ import android.widget.ImageButton;
 import android.widget.ListAdapter;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import dominguessolutions.paul_decisionmaker.R;
+import dominguessolutions.paul_decisionmaker.decisionmaker.presenter.DecisionMakerPresenter;
 
 /**
  * Created by lucas on 18/10/2017.
  */
 
 class ListOptionsAdapter extends BaseAdapter implements ListAdapter {
-    private List<String> list = new ArrayList<String>();
+    private DecisionMakerPresenter decisionMakerPresenter;
     private Context context;
 
     /**
      * Constructor of class that represents a adapter to be used to build the list containing options to be decided
-     * @param list
+     * @param decisionMakerPresenter
      * @param context
      */
-    ListOptionsAdapter(List<String> list, Context context) {
-        this.list = list;
+    ListOptionsAdapter(DecisionMakerPresenter decisionMakerPresenter, Context context) {
+        this.decisionMakerPresenter = decisionMakerPresenter;
         this.context = context;
     }
 
     @Override
     public int getCount() {
-        return list.size();
+        return decisionMakerPresenter.getOptions().size();
     }
 
     @Override
     public Object getItem(int pos) {
-        return list.get(pos);
+        return decisionMakerPresenter.getOptions().get(pos);
     }
 
     @Override
@@ -57,7 +55,7 @@ class ListOptionsAdapter extends BaseAdapter implements ListAdapter {
         }
 
         TextView txtOption = (TextView)optionToDecideView.findViewById(R.id.txtOption);
-        txtOption.setText(list.get(position));
+        txtOption.setText(decisionMakerPresenter.getOptions().get(position));
 
         ImageButton deleteBtn = (ImageButton) optionToDecideView.findViewById(R.id.btnDeleteOption);
         deleteBtn.setOnClickListener(prepareListenerToDeleteOption(position));
@@ -70,7 +68,7 @@ class ListOptionsAdapter extends BaseAdapter implements ListAdapter {
         return new OnClickListener(){
             @Override
             public void onClick(View v) {
-                list.remove(position);
+                decisionMakerPresenter.removeOption(position);
                 notifyDataSetChanged();
             }
         };

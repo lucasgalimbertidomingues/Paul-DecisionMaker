@@ -93,9 +93,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
     }
 
     private void addOptionToScreen() {
-        List<String> options = decisionMakerPresenter.getOptions();
-        ListOptionsAdapter listOptionsAdapter = new ListOptionsAdapter(options, this);
-
+        ListOptionsAdapter listOptionsAdapter = new ListOptionsAdapter(decisionMakerPresenter, this);
         ListView listOptions = (ListView) findViewById(R.id.listOptions);
         listOptions.setAdapter(listOptionsAdapter);
     }

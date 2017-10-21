@@ -20,14 +20,34 @@ public class DecisionMakerPresenter {
         optionsToDecide = new ArrayList<>();
     }
 
+    /**
+     * Presenter method responsible to call the decision based on options
+     * @return string containing the decision
+     */
     public String makeDecision() {
         Decision decision = new DecisionMaker();
         return decision.makeDecision(optionsToDecide);
     }
 
+    /**
+     * Presenter method responsible to add new option to be decided
+     * @param option new option to be decided
+     */
     public void addOption(String option) {
         optionsToDecide.add(option);
     }
 
+    /**
+     * Presenter method responsible to remove an option
+     * @param index position of option to be removed
+     */
+    public void removeOption(int index) {
+        optionsToDecide.remove(index);
+    }
+
+    /**
+     * Presenter method responsible to get all options
+     * @return set of string containg all options
+     */
     public List<String> getOptions() { return optionsToDecide; }
 }

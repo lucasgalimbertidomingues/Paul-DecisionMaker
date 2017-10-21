@@ -13,11 +13,14 @@ import dominguessolutions.paul_decisionmaker.R;
 /**
  * Created by lucas on 17/10/2017.
  */
-public class DecisionDialog extends Dialog implements View.OnClickListener {
+class DecisionDialog extends Dialog implements View.OnClickListener {
     private String decision;
-    private boolean dialogOpen;
 
-    public DecisionDialog(@NonNull Context context) {
+    /**
+     * Constructor of class that represents the dialog that show to user the result of output with decision
+     * @param context context of activity that uses the dialog
+     */
+    DecisionDialog(@NonNull Context context) {
         super(context);
         super.requestWindowFeature(Window.FEATURE_NO_TITLE);
         super.setContentView(R.layout.dialog_decision);
@@ -42,7 +45,6 @@ public class DecisionDialog extends Dialog implements View.OnClickListener {
     public void onClick(View v) {
         if(v.getId() == R.id.btnOk) {
             btnOkClick();
-            return;
         }
     }
 
@@ -54,24 +56,18 @@ public class DecisionDialog extends Dialog implements View.OnClickListener {
     public void show() {
         prepareDialogToShow();
         super.show();
-        setDialogOpen(true);
     }
 
     @Override
     public void dismiss() {
         super.dismiss();
-        setDialogOpen(false);
     }
 
-    public void setDecision(String decision) {
+    /**
+     * Set the decision on the dialog
+     * @param decision  Text containing the decision
+     */
+    void setDecision(String decision) {
         this.decision = decision;
-    }
-
-    public boolean isDialogOpen() {
-        return dialogOpen;
-    }
-
-    private void setDialogOpen(boolean dialogOpen) {
-        this.dialogOpen = dialogOpen;
     }
 }

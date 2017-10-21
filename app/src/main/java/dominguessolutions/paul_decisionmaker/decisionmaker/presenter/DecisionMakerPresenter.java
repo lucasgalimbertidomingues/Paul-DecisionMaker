@@ -13,6 +13,9 @@ import dominguessolutions.paul_decisionmaker.decisionmaker.model.DecisionMaker;
 public class DecisionMakerPresenter {
     private List<String> optionsToDecide;
 
+    /**
+     * Constructor of class used to manage de option and decision
+     */
     public DecisionMakerPresenter() {
         optionsToDecide = new ArrayList<>();
     }

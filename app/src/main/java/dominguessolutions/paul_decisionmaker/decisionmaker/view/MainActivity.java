@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 
         SensorManager sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         sensorManager.registerListener(this, sensorManager.SENSOR_ACCELEROMETER, SensorManager.SENSOR_DELAY_GAME);
-        shake = new ShakeAccelerometer(sensorManager);
+        shake = new ShakeAccelerometer();
 
         ImageButton btnAddOption = (ImageButton)findViewById(R.id.btnAddOption);
         btnAddOption.setOnClickListener(this);
@@ -70,9 +70,13 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
             decisionMakerPresenter.addOption(newOption);
             addOptionToScreen();
             txtNewOption.getText().clear();
-            LinearLayout layoutInsertOptionToStartLayout = (LinearLayout)findViewById(R.id.insertOptionToStartLayout);
-            layoutInsertOptionToStartLayout.setVisibility(View.GONE);
+            cleanHintToInsertOptionToStart();
         }
+    }
+
+    private void cleanHintToInsertOptionToStart() {
+        LinearLayout layoutInsertOptionToStartLayout = (LinearLayout)findViewById(R.id.insertOptionToStartLayout);
+        layoutInsertOptionToStartLayout.setVisibility(View.GONE);
     }
 
     private boolean isValidOption(String newOption) {

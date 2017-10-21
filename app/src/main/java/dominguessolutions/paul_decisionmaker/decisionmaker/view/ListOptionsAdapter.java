@@ -20,11 +20,16 @@ import dominguessolutions.paul_decisionmaker.R;
  * Created by lucas on 18/10/2017.
  */
 
-public class ListOptionsAdapter extends BaseAdapter implements ListAdapter {
+class ListOptionsAdapter extends BaseAdapter implements ListAdapter {
     private List<String> list = new ArrayList<String>();
     private Context context;
 
-    public ListOptionsAdapter(List<String> list, Context context) {
+    /**
+     * Constructor of class that represents a adapter to be used to build the list containing options to be decided
+     * @param list
+     * @param context
+     */
+    ListOptionsAdapter(List<String> list, Context context) {
         this.list = list;
         this.context = context;
     }

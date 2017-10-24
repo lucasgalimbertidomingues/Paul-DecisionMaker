@@ -67,6 +67,9 @@ class ListOptionsAdapter extends BaseAdapter implements ListAdapter {
         ImageButton deleteBtn = (ImageButton) optionToDecideView.findViewById(R.id.btnDeleteOption);
         deleteBtn.setOnClickListener(prepareListenerToDeleteOption(position));
 
+        ImageButton editBtn = (ImageButton) optionToDecideView.findViewById(R.id.btnEditOption);
+        editBtn.setOnClickListener(prepareListenerToEditOption(position));
+
         return optionToDecideView;
     }
 
@@ -88,6 +91,7 @@ class ListOptionsAdapter extends BaseAdapter implements ListAdapter {
             @Override
             public void onClick(View v) {
                 decisionMakerPresenter.removeOption(position);
+                operationEnum = OperationEnum.INSERT;
                 notifyDataSetChanged();
             }
         };

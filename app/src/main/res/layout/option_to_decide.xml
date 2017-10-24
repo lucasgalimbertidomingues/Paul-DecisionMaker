@@ -5,14 +5,23 @@
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/activity_default_margin">
 
+    <ImageButton
+        android:id="@+id/btnEditOption"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@android:drawable/ic_menu_edit"
+        android:background="@android:color/transparent"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"/>
+
+
     <RelativeLayout
         android:orientation="horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/activity_vertical_margin"
         android:layout_marginBottom="@dimen/activity_vertical_margin"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:layout_marginRight="@dimen/activity_horizontal_margin">
+        android:layout_marginLeft="@dimen/activity_horizontal_margin">
 
         <TextView
             android:layout_width="match_parent"
@@ -28,11 +37,12 @@
             android:id="@+id/btnDeleteOption"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignEnd="@+id/txtOption"
-            android:layout_alignRight="@+id/txtOption"
             android:src="@android:drawable/ic_menu_delete"
             android:background="@android:color/transparent"
+            android:layout_alignEnd="@+id/txtOption"
+            android:layout_alignRight="@+id/txtOption"
             android:layout_toStartOf="@+id/txtOption"
-            android:layout_toLeftOf="@id/txtOption"/>
+            android:layout_toLeftOf="@id/txtOption"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"/>
     </RelativeLayout>
 </LinearLayout>

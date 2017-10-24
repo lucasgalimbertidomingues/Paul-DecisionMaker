@@ -45,6 +45,10 @@ public class DecisionMakerPresenter {
         optionsToDecide.remove(index);
     }
 
+    public void editOption(int index, String option) {
+        optionsToDecide.set(index, option);
+    }
+
     /**
      * Presenter method responsible to get all options
      * @return set of string containg all options

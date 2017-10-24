@@ -16,6 +16,7 @@ import android.widget.Toast;
 import java.util.List;
 
 import dominguessolutions.paul_decisionmaker.R;
+import dominguessolutions.paul_decisionmaker.decisionmaker.model.OperationEnum;
 import dominguessolutions.paul_decisionmaker.decisionmaker.model.Shake;
 import dominguessolutions.paul_decisionmaker.decisionmaker.model.ShakeAccelerometer;
 import dominguessolutions.paul_decisionmaker.decisionmaker.model.TextUtils;
@@ -26,6 +27,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
     private DecisionMakerPresenter decisionMakerPresenter;
     private Shake shake;
     private DecisionDialog decisionDialog;
+    private ListOptionsAdapter listOptionsAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,19 +40,20 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
         sensorManager.registerListener(this, sensorManager.SENSOR_ACCELEROMETER, SensorManager.SENSOR_DELAY_GAME);
         shake = new ShakeAccelerometer();
 
-        ImageButton btnAddOption = (ImageButton)findViewById(R.id.btnAddOption);
+        ImageButton btnAddOption = (ImageButton)findViewById(R.id.btnSubmitOption);
         btnAddOption.setOnClickListener(this);
 
         Button btnMakeDecision = (Button)findViewById(R.id.btnMakeDecision);
         btnMakeDecision.setOnClickListener(this);
 
         decisionDialog = new DecisionDialog(this);
+        listOptionsAdapter = new ListOptionsAdapter(decisionMakerPresenter, this);
     }
 
     @Override
     public void onClick(View v) {
-        if(v.getId() == R.id.btnAddOption) {
-            btnAddOptionClick();
+        if(v.getId() == R.id.btnSubmitOption) {
+            btnSubmitOptionClick();
             return;
         }
         if(v.getId() == R.id.btnMakeDecision) {
@@ -62,16 +65,33 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
         makeDecision();
     }
 
-    private void btnAddOptionClick() {
-        EditText txtNewOption = (EditText)findViewById(R.id.txtNewOption);
-        String newOption = txtNewOption.getText().toString();
+    private void btnSubmitOptionClick() {
+        EditText txtOption = (EditText)findViewById(R.id.txtSubmitOption);
+        String option = txtOption.getText().toString();
 
-        if (isValidOption(newOption)) {
-            decisionMakerPresenter.addOption(newOption);
+        if (isValidOption(option)) {
+            setOption(option);
             addOptionToScreen();
-            txtNewOption.getText().clear();
+            updateOperationStatusToInsert();
+            txtOption.getText().clear();
             cleanHintToInsertOptionToStart();
         }
+    }
+
+    private void setOption(String option) {
+        if (isNewOption()) {
+            decisionMakerPresenter.addOption(option);
+        } else {
+            decisionMakerPresenter.editOption(listOptionsAdapter.getIndexChoiced(), option);
+        }
+    }
+
+    private void updateOperationStatusToInsert() {
+        listOptionsAdapter.setOperationEnum(OperationEnum.INSERT);
+    }
+
+    private boolean isNewOption() {
+        return listOptionsAdapter.getOperationEnum().equals(OperationEnum.INSERT);
     }
 
     private void cleanHintToInsertOptionToStart() {
@@ -93,7 +113,6 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
     }
 
     private void addOptionToScreen() {
-        ListOptionsAdapter listOptionsAdapter = new ListOptionsAdapter(decisionMakerPresenter, this);
         ListView listOptions = (ListView) findViewById(R.id.listOptions);
         listOptions.setAdapter(listOptionsAdapter);
     }

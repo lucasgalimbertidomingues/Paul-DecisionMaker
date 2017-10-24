@@ -78,7 +78,7 @@
         android:background="@color/colorPrimaryDark">
 
         <EditText
-            android:id="@+id/txtNewOption"
+            android:id="@+id/txtSubmitOption"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_weight="1"
@@ -89,7 +89,7 @@
             android:layout_marginRight="@dimen/activity_horizontal_margin"/>
 
         <ImageButton
-            android:id="@+id/btnAddOption"
+            android:id="@+id/btnSubmitOption"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:background="@color/colorPrimary"

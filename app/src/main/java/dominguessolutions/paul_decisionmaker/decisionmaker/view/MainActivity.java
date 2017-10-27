@@ -48,6 +48,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 
         decisionDialog = new DecisionDialog(this);
         listOptionsAdapter = new ListOptionsAdapter(decisionMakerPresenter, this);
+        addOptionToScreen();
     }
 
     @Override
@@ -62,7 +63,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
     }
 
     private void btnMakeDecisionClick() {
-        makeDecision();
+        makeDecision(true);
     }
 
     private void btnSubmitOptionClick() {
@@ -120,27 +121,33 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
     @Override
     public void onSensorChanged(int sensor, float[] values) {
         if (shake.shakeDetected(sensor, values)) {
-            makeDecision();
+            makeDecision(false);
         }
     }
 
-    private void makeDecision() {
+    private void makeDecision(boolean decisionMadeByButton) {
         if (haveOptionsToDecide(decisionMakerPresenter.getOptions())) {
             showDecision();
-        } else {
+        } else if (decisionMadeByButton) {
             notifyUserToSetSomeOption();
         }
     }
 
     private void notifyUserToSetSomeOption() {
-        Toast.makeText(this, R.string.insert_some_option, Toast.LENGTH_LONG).show();
+        Toast.makeText(this, R.string.insert_some_option, Toast.LENGTH_SHORT).show();
     }
 
     private void showDecision() {
         if (!decisionDialog.isShowing()) {
             decisionDialog.setDecision(decisionMakerPresenter.makeDecision());
-            decisionDialog.show();
+            if(!isActivityWasDestroyed()) {
+                decisionDialog.show();
+            }
         }
+    }
+
+    private boolean isActivityWasDestroyed() {
+        return this.isFinishing();
     }
 
     private boolean haveOptionsToDecide(List<String> options) {
